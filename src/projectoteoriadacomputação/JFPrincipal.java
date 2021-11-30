@@ -12,7 +12,10 @@ package projectoteoriadacomputação;
 public class JFPrincipal extends javax.swing.JFrame {
 
     private String word01, word02, word03, maquina[], quadrupla[] = new String [20];
-    private int estado, tamanho, ponteiro, contQuad = 0;
+    private int estado, tamanho, ponteiro = 2, i = 0, contQuad = 0;
+    private char[] entrada;
+    //private javax.swing.JTextField[] JTextField; 
+    //private javax.swing.JLabel[] JLabel;
     
     public JFPrincipal() {
         initComponents();
@@ -71,6 +74,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         });
 
         jButton3.setText("Executar Passo/Passo");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTF01.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTF01.setText("*");
@@ -214,11 +222,11 @@ public class JFPrincipal extends javax.swing.JFrame {
                                 .addComponent(jTF012, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(54, 54, 54))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jL01, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -343,28 +351,203 @@ public class JFPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void cadastrarEntradas(){
+        int tamanho = contQuad;
+        entrada = new char[tamanho];
+        //System.out.println("tamanho:" + tamanho);
+        for (int i = 0; i < tamanho; i++) {
+            entrada[i] = quadrupla[i].charAt(4);
+        }
+    }
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        
         if ( (this.jTFpalavra1.getText().length() >= 9 && this.jTFpalavra1.getText().length() <= 11) && this.jTFpalavra1.getText().contains(",") && this.jTFpalavra1.getText().contains("q")) {
             this.jL2.setText(this.jL2.getText() + "<" + this.jTFpalavra1.getText() + "> | "); 
             quadrupla[contQuad] = this.jL2.getText();
+            System.out.print(quadrupla[contQuad].charAt(4));
             contQuad++;
             this.jTFpalavra1.setText("");
+            
         }else{
             
         }
         
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        cadastrarEntradas();
+        
+        q0(quadrupla[0].charAt(6), true);
+    }//GEN-LAST:event_jButton3ActionPerformed
     
-    void moveToRight(){
+    private void moveToRight(){
+        switch(ponteiro){
+            case 1: 
+            break;
+            case 2: 
+                jL02.setText("_");
+                jL03.setText("^");
+            break;
+            case 3: 
+                jL03.setText("_");
+                jL04.setText("^");
+            break;
+            case 4: 
+                jL04.setText("_");
+                jL05.setText("^");
+            break;
+            case 5: 
+                jL05.setText("_");
+                jL06.setText("^");
+            break;
+            case 6: 
+                jL06.setText("_");
+                jL07.setText("^");
+            break;
+            case 7: 
+                jL07.setText("_");
+                jL08.setText("^");
+            break;
+            case 8: 
+                jL08.setText("_");
+                jL09.setText("^");
+            break;
+            case 9: 
+                jL09.setText("_");
+                jL10.setText("^");
+            break;
+            case 10: 
+                jL10.setText("_");
+                jL11.setText("^");
+            break;
+            case 11: 
+                jL11.setText("_");
+                jL12.setText("^");
+            break;
+            case 12: 
+
+            break;
+        }
         this.ponteiro++;
     }
     
-    void moveToLeft(){
+    private void moveToLeft(){
+        switch(ponteiro){
+            case 1: 
+            break;
+            case 2: 
+                jL02.setText("_");
+                jL01.setText("^");
+            break;
+            case 3: 
+                jL03.setText("_");
+                jL02.setText("^");
+            break;
+            case 4: 
+                jL04.setText("_");
+                jL03.setText("^");
+            break;
+            case 5: 
+                jL05.setText("_");
+                jL04.setText("^");
+            break;
+            case 6: 
+                jL06.setText("_");
+                jL05.setText("^");
+            break;
+            case 7: 
+                jL07.setText("_");
+                jL06.setText("^");
+            break;
+            case 8: 
+                jL08.setText("_");
+                jL07.setText("^");
+            break;
+            case 9: 
+                jL09.setText("_");
+                jL08.setText("^");
+            break;
+            case 10: 
+                jL10.setText("_");
+                jL09.setText("^");
+            break;
+            case 11: 
+                jL11.setText("_");
+                jL10.setText("^");
+            break;
+            case 12: 
+                jL12.setText("_");
+                jL11.setText("^");
+            break;
+        }
         this.ponteiro--;
     }
     
-    void inicializa (){
+    private void q0 (char nWrite, boolean move){
+         int cont = 1;
+        switch(ponteiro){
+            case 1:    break;
+            case 2: jTF02.setText(nWrite+"");break;
+            case 3: jTF03.setText(nWrite+"");break;
+            case 4: if (jTF04.getText().equals("*")) {
+                    break;
+                    }
+                    jTF04.setText(nWrite+""); break;
+            case 5: if (jTF05.getText().equals("*")) {
+                    break;
+                    }
+                    jTF05.setText(nWrite+"");break;
+            case 6: if (jTF06.getText().equals("*")) {
+                    break;
+                    }
+                jTF06.setText(nWrite+"");break;
+            case 7: if (jTF07.getText().equals("*")) {
+                    break;
+                    } 
+                jTF07.setText(nWrite+"");break;
+            case 8: if (jTF08.getText().equals("*")) {
+                    break;
+                    }
+                    jTF08.setText(nWrite+"");break;
+            case 9: if (jTF09.getText().equals("*")) {
+                    break;
+                    }
+                    jTF09.setText(nWrite+"");break;
+            case 10: 
+                    if (jTF10.getText().equals("*")) {
+                    break;
+                    } 
+                    jTF10.setText(nWrite+"");break;
+            case 11: if (jTF11.getText().equals("*")) {
+                    break;
+                    } 
+                    jTF11.setText(nWrite+""); break;
+            case 12: 
+                    if (jTF012.getText().equals("*")) {
+                    break;
+                    } 
+                    jTF012.setText(nWrite+""); break;
+        }
+        if (move) {
+            moveToRight();
+        }else{
+            moveToLeft();
+        }
+        if (ponteiro == 12) {
+
+        }else{
+            if (quadrupla[cont] != null){
+                q0(quadrupla[cont].charAt(6), true);
+                cont++;
+            }else{
+                q0(quadrupla[cont-1].charAt(6), true);
+            }
+        }  
+    }
+    
+    private void inicializa (){
         int posicao = 0;
         while(posicao < this.tamanho){
             switch(posicao){
